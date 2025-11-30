@@ -1,0 +1,12 @@
+# Dataset
+data/raw/ucf101_2d.pkl
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# OS
+.DS_Store
