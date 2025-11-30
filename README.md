@@ -74,7 +74,12 @@ python src/train_lstm.py --epochs 30 --batch_size 64
 Para realizar predicciones con un modelo entrenado:
 
 ```bash
-python src/predict.py --model_type lstm --weights_path skeleton_lstm_model.pth --pkl_path data/raw/ucf101_2d.pkl
+python src/predict.py --model_type lstm --weights skeleton_lstm_model.pth --pkl_path data/raw/ucf101_2d.pkl
+```
+
+Si deseas probar con un video específico (por índice):
+```bash
+python src/predict.py --model_type lstm --weights skeleton_lstm_model.pth --pkl_path data/raw/ucf101_2d.pkl --index 100
 ```
 
 ## Estructura del Proyecto

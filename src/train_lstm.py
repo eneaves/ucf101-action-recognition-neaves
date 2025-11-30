@@ -1,3 +1,4 @@
+import argparse
 import torch
 from torch.utils.data import DataLoader
 import torch.nn as nn
@@ -69,6 +70,11 @@ def evaluate(model, dataloader, criterion, device):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--epochs", type=int, default=15)
+    parser.add_argument("--batch_size", type=int, default=64)
+    args = parser.parse_args()
+
     pkl_path = "data/raw/ucf101_2d.pkl"
 
     train_split = "train1"
@@ -97,7 +103,7 @@ def main():
 
     train_loader = DataLoader(
         train_dataset,
-        batch_size=64,
+        batch_size=args.batch_size,
         shuffle=True,
         num_workers=2,
         pin_memory=torch.cuda.is_available(),
@@ -105,7 +111,7 @@ def main():
 
     val_loader = DataLoader(
         val_dataset,
-        batch_size=64,
+        batch_size=args.batch_size,
         shuffle=False,
         num_workers=2,
         pin_memory=torch.cuda.is_available(),
@@ -133,7 +139,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
-    num_epochs = 15  
+    num_epochs = args.epochs
 
     for epoch in range(1, num_epochs + 1):
         print(f"\n===== Epoch {epoch}/{num_epochs} =====")
