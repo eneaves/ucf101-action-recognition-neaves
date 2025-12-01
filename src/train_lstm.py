@@ -117,7 +117,6 @@ def main():
         pin_memory=torch.cuda.is_available(),
     )
 
-    # Obtener shapes ejemplo
     sample_skeletons, _ = next(iter(train_loader))  
     _, T, V, C = sample_skeletons.shape
     num_classes = len(train_dataset.label_to_idx)

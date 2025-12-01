@@ -99,8 +99,6 @@ class UCF101SkeletonDataset(Dataset):
         score_sampled = score_person[frame_indices] 
 
         # Normalización de coordenadas
-        # Asumimos resolución original aprox 340x256 (UCF101)
-        # Normalizamos a rango [-1, 1]
         kp_sampled[..., 0] = (kp_sampled[..., 0] / 340.0) * 2 - 1
         kp_sampled[..., 1] = (kp_sampled[..., 1] / 256.0) * 2 - 1
 

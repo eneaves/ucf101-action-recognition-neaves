@@ -131,7 +131,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
-    num_epochs = 10  # puedes ajustar
+    num_epochs = 10  
 
     for epoch in range(1, num_epochs + 1):
         print(f"\n===== Epoch {epoch}/{num_epochs} =====")

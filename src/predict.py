@@ -98,7 +98,6 @@ def main():
         use_score=False,
     )
 
-    # Sample de prueba para obtener shapes
     sample_skeleton, sample_label_idx = dataset[0]
     T, V, C = sample_skeleton.shape
     num_classes = len(dataset.label_to_idx)
@@ -109,7 +108,6 @@ def main():
     device = get_device()
     print("Usando device:", device)
 
-    # Ruta por defecto de weights según el tipo de modelo
     if args.weights is None:
         if args.model_type == "baseline":
             weights_path = "baseline_skeleton_mlp.pth"
@@ -121,7 +119,6 @@ def main():
     print(f"Cargando modelo '{args.model_type}' desde: {weights_path}")
     model = load_model(args.model_type, V, C, num_classes, weights_path, device)
 
-    # Elegir índice
     if args.index is None:
         idx = random.randint(0, len(dataset) - 1)
         print(f"Ningún índice especificado, usando índice aleatorio: {idx}")
@@ -133,7 +130,6 @@ def main():
     skeleton, label_idx = dataset[idx]  
     label_original = dataset.idx_to_label[label_idx] 
 
-    # Preparar batch de tamaño 1
     skeleton = skeleton.unsqueeze(0).to(device) 
 
     with torch.no_grad():

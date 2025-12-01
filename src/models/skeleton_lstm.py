@@ -27,7 +27,6 @@ class SkeletonLSTMModel(nn.Module):
         )
 
         self.dropout = nn.Dropout(dropout)
-        # Si es bidireccional, el hidden size se duplica en la salida
         self.fc = nn.Linear(hidden_size * 2, num_classes)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -38,10 +37,6 @@ class SkeletonLSTMModel(nn.Module):
 
         # LSTM
         out, (h_n, c_n) = self.lstm(x)
-
-        # Tomamos el último estado oculto
-        # h_n tiene forma (num_layers * num_directions, batch, hidden_size)
-        # Concatenamos las dos direcciones de la última capa
         
         # h_n[-2] es forward de la última capa
         # h_n[-1] es backward de la última capa

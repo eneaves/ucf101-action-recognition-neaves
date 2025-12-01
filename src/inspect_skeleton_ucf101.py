@@ -10,17 +10,14 @@ def main():
     print("Tipo de data:", type(data))
     print("Keys del dict:", data.keys())
 
-    # Split info
     split = data["split"]
     print("\n=== SPLITS DISPONIBLES ===")
     for k, v in split.items():
         print(f"Split '{k}' tiene {len(v)} videos")
 
-    # Anotaciones
     annotations = data["annotations"]
     print("\nTotal de anotaciones:", len(annotations))
 
-    # anotación de ejemplo
     ann0 = annotations[0]
     print("\n=== EJEMPLO DE ANOTACIÓN ===")
     print("Keys:", ann0.keys())
